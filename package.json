@@ -1,0 +1,32 @@
+{
+  "name": "digitalvillage-html-mobile",
+  "private": true,
+  "main": "index.js",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@ant-design/icons-vue": "^7.0.1",
+    "ant-design-vue": "^4.2.1",
+    "axios": "^1.7.1",
+    "leaflet": "^1.9.4",
+    "leaflet-draw": "^1.0.4",
+    "leaflet-editable": "^1.3.0",
+    "leaflet.markercluster": "^1.5.3",
+    "pinia": "^2.1.7",
+    "prettier": "^3.5.3",
+    "sass": "^1.77.2",
+    "terraformer-wkt-parser": "^1.2.1",
+    "vant": "^4.9.7",
+    "vue": "^3.4.21",
+    "vue-router": "^4.3.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.4",
+    "vite": "^5.2.0"
+  }
+}
