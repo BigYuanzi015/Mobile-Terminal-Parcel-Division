@@ -1,0 +1,25 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { "name": "地块-A", "category": "farmland", "area": 15.6, "owner": "张三" },
+      "geometry": { "type": "Polygon", "coordinates": [[[116.39, 39.90], [116.42, 39.90], [116.42, 39.92], [116.39, 39.92], [116.39, 39.90]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "地块-B", "category": "farmland", "area": 8.2, "owner": "李四" },
+      "geometry": { "type": "Polygon", "coordinates": [[[116.43, 39.91], [116.45, 39.91], [116.45, 39.93], [116.43, 39.93], [116.43, 39.91]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "地块-C", "category": "orchard", "area": 22.1, "owner": "王五" },
+      "geometry": { "type": "Polygon", "coordinates": [[[116.38, 39.94], [116.41, 39.94], [116.41, 39.96], [116.38, 39.96], [116.38, 39.94]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "地块-D", "category": "greenhouse", "area": 3.5, "owner": "赵六" },
+      "geometry": { "type": "Polygon", "coordinates": [[[116.46, 39.89], [116.47, 39.89], [116.47, 39.90], [116.46, 39.90], [116.46, 39.89]]] }
+    }
+  ]
+}

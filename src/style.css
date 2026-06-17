@@ -1,4 +1,23 @@
+/**
+ * =========================================
+ *  全局样式
+ *
+ *  包含：
+ *    1. CSS Reset — 清除浏览器默认边距
+ *    2. 安全区适配 — 刘海屏 / 底部 Home Bar
+ *    3. Leaflet 控件定制 — 隐藏默认 attribution / zoom
+ *    4. Vant 组件微调
+ *    5. 绘制标注样式 — 消除 divIcon 默认边框
+ * =========================================
+ */
+
+/* ---- 1. CSS Reset ---- */
 *,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html,
 body,
 ul,
@@ -7,37 +26,107 @@ p {
   margin: 0;
   padding: 0;
   list-style: none;
-  border: none;
 }
 
+/* ---- 2. 全局布局与安全区 ---- */
+html,
+body {
+  /* 填满视口，禁止超出滚动 */
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  /* iOS 安全区：刘海 + 底部 Home Bar */
+  padding:
+    env(safe-area-inset-top)
+    env(safe-area-inset-right)
+    env(safe-area-inset-bottom)
+    env(safe-area-inset-left);
+
+  /* 系统字体栈，保证中文渲染 */
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+
+  /* 字体平滑 */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* 禁止移动端双击/捏合缩放文字 */
+  -webkit-text-size-adjust: 100%;
+
+  /* 消除 300ms 点击延迟 */
+  touch-action: manipulation;
+}
+
+/* ---- 3. Leaflet 控件定制 ---- */
+
+/* 隐藏右下角 attribution（省空间） */
 .leaflet-control-attribution {
-  /* 隐藏Leaflet Logo */
   display: none;
 }
 
-/* 左侧 放大按钮 */
-.leaflet-touch .leaflet-bar a:first-child {
-  border-top-left-radius: 8px !important;
-  border-top-right-radius: 8px !important;
-  font-size: 26px !important;
-  font-weight: 600 !important;
+/* 隐藏左上角缩放按钮（移动端用手势缩放替代） */
+.leaflet-control-zoom {
+  display: none;
+}
+
+/* ---- 4. Vant 组件微调 ---- */
+
+/* 底部弹窗圆角加大 */
+.van-popup--bottom.van-popup--round {
+  border-radius: 16px 16px 0 0;
+}
+
+/* 遮罩层透明度 */
+.van-overlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* ---- 5. GeoJSON 弹出框操作按钮 ---- */
+
+/* 编辑按钮 */
+.popup-edit-btn {
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+  padding: 8px 0;
+  color: #fff;
+  background: #1989fa;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/* 删除按钮 */
+.popup-del-btn {
+  display: block;
+  width: 100%;
+  margin-top: 6px;
+  padding: 8px 0;
+  color: #fff;
+  background: #ee0a24;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/* ---- 6. 绘制标注消除 divIcon 默认样式 ---- */
+
+/*
+ * divIcon 默认带白色背景和边框的容器，
+ * 这里强制清除，仅留 span 的文字 + text-shadow 描边
+ */
+.draw-dist-label,
+.draw-temp-label,
+.draw-area-label {
+  background: transparent !important;
   border: none !important;
-}
-
-/* 左侧 缩小按钮 */
-.leaflet-touch .leaflet-bar a:last-child {
-  border-bottom-left-radius: 8px !important;
-  border-bottom-right-radius: 8px !important;
-  font-size: 26px !important;
-  font-weight: 600 !important;
-}
-
-/* 左侧 按钮组 */
-.leaflet-touch .leaflet-control-layers,
-.leaflet-touch .leaflet-bar {
-  border: none !important;
-}
-
-.van-back-top {
-  background-color: #5ea94a !important;
 }

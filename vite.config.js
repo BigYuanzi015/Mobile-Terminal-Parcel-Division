@@ -3,38 +3,34 @@ import vue from "@vitejs/plugin-vue";
 import path from "path";
 
 /**
- * Vite配置文件
- * 详细配置说明请访问: https://vitejs.dev/config/
- * @returns Vite配置对象
+ * Vite 配置文件
+ * @see https://vitejs.dev/config/
  */
 export default defineConfig({
-  // 使用的插件列表
   plugins: [vue()],
-  // 静态资源的基础路径
+
+  // 相对路径，适配移动端部署
   base: "./",
-  // 文件解析配置
+
+  // 路径别名
   resolve: {
-    // 支持的文件扩展名
     extensions: [".mjs", ".js", ".ts", ".jsx", ".tsx", ".json", ".vue"],
-    // 别名设置，用于快速引用路径
     alias: {
       "@": path.resolve(__dirname, "src"),
     },
   },
-  // 构建相关配置
-  build: { assetsPublicPath: "./" },
-  // 服务器配置
+
+  // 开发服务器
   server: {
-    // 服务器监听端口
-    port: 8000,
-    // host: "192.168.0.200",
-    host: "192.168.2.64",
-    // 配置代理，用于将本地开发服务器的请求转发到指定的目标服务器
-    proxy: {
-      "/dv_api": {
-        target: "https://soi.zhxtypt.com:9013/",
-        changeOrigin: true,
-      },
-    },
+    port: 3000,
+    // 如需移动端真机调试，改为本机局域网 IP
+    // host: "192.168.1.100",
+    // 如需代理 API，在此配置
+    // proxy: {
+    //   "/api": {
+    //     target: "http://localhost:8080",
+    //     changeOrigin: true,
+    //   },
+    // },
   },
 });
